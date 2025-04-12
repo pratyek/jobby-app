@@ -1,14 +1,17 @@
 import Cookies from 'js-cookie'
 import {Redirect, Link} from 'react-router-dom'
 import Header from '../Header'
-
 import './index.css'
 
 const Home = () => {
   const jwtToken = Cookies.get('jwt_token')
+  
   if (jwtToken === undefined) {
     return <Redirect to="/login" />
   }
+  
+  const userRole = localStorage.getItem('userRole')
+  const isEmployer = userRole === 'employer'
 
   return (
     <>
@@ -21,11 +24,27 @@ const Home = () => {
             company reviews. Find the job that fits your abilities and
             potential.
           </p>
-          <Link to="/jobs" className="link-item">
-            <button type="button" className="find-jobs">
-              Find Jobs
-            </button>
-          </Link>
+          
+          {isEmployer ? (
+            <div className="employer-buttons">
+              <Link to="/employer-dashboard" className="link-item">
+                <button type="button" className="post-jobs-button">
+                  Post Jobs
+                </button>
+              </Link>
+              <Link to="/jobs" className="link-item">
+                <button type="button" className="find-jobs">
+                  View All Jobs
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <Link to="/jobs" className="link-item">
+              <button type="button" className="find-jobs">
+                Find Jobs
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </>

@@ -4,10 +4,11 @@ import {Redirect, Link} from 'react-router-dom'
 
 import './index.css'
 
-class LoginForm extends Component {
+class RegistrationForm extends Component {
   state = {
     username: '',
     password: '',
+    role: 'applicant', // Default role
     showSubmitError: false,
     errorMsg: '',
   }
@@ -19,10 +20,10 @@ class LoginForm extends Component {
       path: '/',
     })
     
-    // Save role in localStorage to use it for routing
+    // Save role in localStorage
     localStorage.setItem('userRole', role)
     
-    // Redirect based on user role
+    // Redirect based on role
     if (role === 'employer') {
       history.replace('/employer-dashboard')
     } else {
@@ -36,7 +37,7 @@ class LoginForm extends Component {
 
   onSubmitForm = async event => {
     event.preventDefault()
-    const {username, password} = this.state
+    const {username, password, role} = this.state
     
     if (!username || !password) {
       this.onSubmitFailure('Username and password are required')
@@ -44,15 +45,15 @@ class LoginForm extends Component {
     }
     
     try {
-      console.log('Attempting to login with username:', username)
+      console.log('Sending registration request:', { username, role })
       
       // Using relative URL for proxy to work
-      const response = await fetch('http://localhost:3000/api/auth/login', {
+      const response = await fetch('http://localhost:3000/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, role }),
       })
       
       console.log('Response status:', response.status)
@@ -63,15 +64,15 @@ class LoginForm extends Component {
       if (response.ok) {
         this.onSubmitSuccess(data.token, data.role)
       } else {
-        this.onSubmitFailure(data.error_msg || 'Login failed')
+        this.onSubmitFailure(data.error_msg || 'Registration failed')
       }
     } catch (error) {
-      console.error('Login error:', error)
+      console.error('Registration error:', error)
       this.onSubmitFailure('Server error. Please try again.')
     }
   }
 
-  onEnterUsername = event => {
+  onChangeUsername = event => {
     this.setState({username: event.target.value})
   }
 
@@ -79,23 +80,28 @@ class LoginForm extends Component {
     this.setState({password: event.target.value})
   }
 
+  onChangeRole = event => {
+    this.setState({role: event.target.value})
+  }
+
   renderUsername = () => {
     const {username} = this.state
 
     return (
-      <>
-        <label className="label" htmlFor="userName">
+      <div className="input-container">
+        <label className="label" htmlFor="username">
           USERNAME
         </label>
         <input
           type="text"
-          id="userName"
+          id="username"
           placeholder="Username"
           className="user-input"
           value={username}
-          onChange={this.onEnterUsername}
+          onChange={this.onChangeUsername}
+          required
         />
-      </>
+      </div>
     )
   }
 
@@ -103,7 +109,7 @@ class LoginForm extends Component {
     const {password} = this.state
 
     return (
-      <>
+      <div className="input-container">
         <label className="label" htmlFor="password">
           PASSWORD
         </label>
@@ -114,16 +120,39 @@ class LoginForm extends Component {
           placeholder="Password"
           value={password}
           onChange={this.onChangePassword}
+          required
         />
-      </>
+      </div>
+    )
+  }
+
+  renderRoleSelection = () => {
+    const {role} = this.state
+
+    return (
+      <div className="input-container">
+        <label className="label" htmlFor="role">
+          I AM A
+        </label>
+        <select
+          id="role"
+          className="user-input"
+          value={role}
+          onChange={this.onChangeRole}
+          required
+        >
+          <option value="applicant">Job Seeker</option>
+          <option value="employer">Employer</option>
+        </select>
+      </div>
     )
   }
 
   render() {
     const {showSubmitError, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
+    
     if (jwtToken !== undefined) {
-      // Check role to determine where to redirect
       const role = localStorage.getItem('userRole')
       if (role === 'employer') {
         return <Redirect to="/employer-dashboard" />
@@ -139,18 +168,20 @@ class LoginForm extends Component {
             alt="website logo"
             className="website-logo"
           />
+          <h1 className="form-heading">Create an Account</h1>
           <form className="form-container" onSubmit={this.onSubmitForm}>
-            <div className="input-container">{this.renderUsername()}</div>
-            <div className="input-container">{this.renderPassword()}</div>
-            <button className="login-button" type="submit">
-              Login
+            {this.renderUsername()}
+            {this.renderPassword()}
+            {this.renderRoleSelection()}
+            <button className="register-button" type="submit">
+              Register
             </button>
             {showSubmitError && <p className="error-msg">*{errorMsg}</p>}
           </form>
-          <p className="register-text">
-            Don't have an account?{' '}
-            <Link to="/register" className="register-link">
-              Register
+          <p className="login-text">
+            Already have an account?{' '}
+            <Link to="/login" className="login-link">
+              Login
             </Link>
           </p>
         </div>
@@ -159,4 +190,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default RegistrationForm

@@ -5,9 +5,15 @@ import './index.css'
 const Header = props => {
   const onClickLogout = () => {
     const {history} = props
+    // Clear both the cookie and localStorage
     Cookies.remove('jwt_token')
+    localStorage.removeItem('userRole')
     history.replace('/login')
   }
+  
+  // Get role from localStorage for consistency with your login implementation
+  const userRole = localStorage.getItem('userRole')
+  const isEmployer = userRole === 'employer'
 
   return (
     <nav className="navbar-container">
@@ -27,6 +33,11 @@ const Header = props => {
         <Link to="/jobs" className="link-item">
           <li className="jon-heading home">Jobs</li>
         </Link>
+        {isEmployer && (
+          <Link to="/employer-dashboard" className="link-item">
+            <li className="jon-heading home">Portal</li>
+          </Link>
+        )}
       </ul>
       <div>
         <button type="button" className="logout-button" onClick={onClickLogout}>
