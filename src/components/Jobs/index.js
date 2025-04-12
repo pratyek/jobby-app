@@ -198,7 +198,8 @@ class Jobs extends Component {
               "job_description": "The Security Operations team is seeking a new team member to assist with a large-scale Data Center Migration and application integration. This team supports customer service and several corporate functions (HR/Legal/Compliance), primarily with PayPal’s global partners that use Citrix and third-party platforms. ",
               "employment_type": "Part Time",
               "package_per_annum": "38 LPA"
-          }]; // Replace with your default jobs data if needed
+          }];
+           // Replace with your default jobs data if needed
 
         // If the jobs array is defined elsewhere, use it here
         allJobs = data

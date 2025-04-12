@@ -15,7 +15,7 @@ app.use(cookieParser());
 // CORS headers - manually setting headers for all routes
 app.use((req, res, next) => {
   // Allow requests from any origin during development
-  res.header('Access-Control-Allow-Origin', 'https://jobby-app-teal.vercel.app/');
+  res.header('Access-Control-Allow-Origin', 'https://jobby-app-teal.vercel.app');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -211,7 +211,7 @@ app.post('/api/auth/register', async (req, res) => {
       expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       httpOnly: true,
       sameSite: 'None',  // Important for cross-site cookies
-      secure: false      // Set to true in production with HTTPS
+      secure: true      // Set to true in production with HTTPS
     });
     
     console.log('User registered successfully:', user.username);
