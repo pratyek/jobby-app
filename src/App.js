@@ -14,14 +14,14 @@ const App = () => (
     <Route exact path="/register" component={RegistrationForm} />
     <ProtectedRoute exact path="/" component={Home} />
     <ProtectedRoute exact path="/jobs" component={Jobs} />
-    <ProtectedRoute 
-      exact 
-      path="/employer-dashboard" 
-      component={EmployerDashboard} 
-      role="employer"
+    <ProtectedRoute
+      exact
+      path="/employer-dashboard"
+      component={EmployerDashboard}
+      requiredRole="employer"
     />
     <Route path="/not-found" component={NotFound} />
-    <Redirect to="not-found" />
+    <Redirect to="/not-found" />
   </Switch>
 )
 
