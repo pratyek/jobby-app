@@ -18,10 +18,10 @@ class LoginForm extends Component {
       expires: 30,
       path: '/',
     })
-    
+
     // Save role in localStorage to use it for routing
     localStorage.setItem('userRole', role)
-    
+
     // Redirect based on user role
     if (role === 'employer') {
       history.replace('/employer-dashboard')
@@ -37,29 +37,29 @@ class LoginForm extends Component {
   onSubmitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    
+
     if (!username || !password) {
       this.onSubmitFailure('Username and password are required')
       return
     }
-    
+
     try {
       console.log('Attempting to login with username:', username)
-      
+
       // Using relative URL for proxy to work
       const response = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({username, password}),
       })
-      
+
       console.log('Response status:', response.status)
-      
+
       const data = await response.json()
       console.log('Response data:', data)
-      
+
       if (response.ok) {
         this.onSubmitSuccess(data.token, data.role)
       } else {

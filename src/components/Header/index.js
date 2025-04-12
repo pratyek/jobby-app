@@ -10,7 +10,7 @@ const Header = props => {
     localStorage.removeItem('userRole')
     history.replace('/login')
   }
-  
+
   // Get role from localStorage for consistency with your login implementation
   const userRole = localStorage.getItem('userRole')
   const isEmployer = userRole === 'employer'

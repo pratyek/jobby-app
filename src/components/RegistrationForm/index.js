@@ -19,10 +19,10 @@ class RegistrationForm extends Component {
       expires: 30,
       path: '/',
     })
-    
+
     // Save role in localStorage
     localStorage.setItem('userRole', role)
-    
+
     // Redirect based on role
     if (role === 'employer') {
       history.replace('/employer-dashboard')
@@ -38,29 +38,29 @@ class RegistrationForm extends Component {
   onSubmitForm = async event => {
     event.preventDefault()
     const {username, password, role} = this.state
-    
+
     if (!username || !password) {
       this.onSubmitFailure('Username and password are required')
       return
     }
-    
+
     try {
-      console.log('Sending registration request:', { username, role })
-      
+      console.log('Sending registration request:', {username, role})
+
       // Using relative URL for proxy to work
       const response = await fetch('http://localhost:3000/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password, role }),
+        body: JSON.stringify({username, password, role}),
       })
-      
+
       console.log('Response status:', response.status)
-      
+
       const data = await response.json()
       console.log('Response data:', data)
-      
+
       if (response.ok) {
         this.onSubmitSuccess(data.token, data.role)
       } else {
@@ -151,7 +151,7 @@ class RegistrationForm extends Component {
   render() {
     const {showSubmitError, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
-    
+
     if (jwtToken !== undefined) {
       const role = localStorage.getItem('userRole')
       if (role === 'employer') {

@@ -5,11 +5,11 @@ import './index.css'
 
 const Home = () => {
   const jwtToken = Cookies.get('jwt_token')
-  
+
   if (jwtToken === undefined) {
     return <Redirect to="/login" />
   }
-  
+
   const userRole = localStorage.getItem('userRole')
   const isEmployer = userRole === 'employer'
 
@@ -24,7 +24,7 @@ const Home = () => {
             company reviews. Find the job that fits your abilities and
             potential.
           </p>
-          
+
           {isEmployer ? (
             <div className="employer-buttons">
               <Link to="/employer-dashboard" className="link-item">
