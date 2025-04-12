@@ -48,13 +48,16 @@ class RegistrationForm extends Component {
       console.log('Sending registration request:', {username, role})
 
       // Using relative URL for proxy to work
-      const response = await fetch('http://localhost:3000/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://jobby-app-5gfg.onrender.com/api/auth/register',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({username, password, role}),
         },
-        body: JSON.stringify({username, password, role}),
-      })
+      )
 
       console.log('Response status:', response.status)
 

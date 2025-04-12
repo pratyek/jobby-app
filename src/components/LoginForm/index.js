@@ -47,13 +47,16 @@ class LoginForm extends Component {
       console.log('Attempting to login with username:', username)
 
       // Using relative URL for proxy to work
-      const response = await fetch('http://localhost:3000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://jobby-app-5gfg.onrender.com/api/auth/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({username, password}),
         },
-        body: JSON.stringify({username, password}),
-      })
+      )
 
       console.log('Response status:', response.status)
 
