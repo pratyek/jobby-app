@@ -25,7 +25,7 @@ class RegistrationForm extends Component {
 
     // Redirect based on role
     if (role === 'employer') {
-      history.replace('/employer-dashboard')
+      history.replace('/')
     } else {
       history.replace('/')
     }

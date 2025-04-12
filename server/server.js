@@ -15,7 +15,7 @@ app.use(cookieParser());
 // CORS headers - manually setting headers for all routes
 app.use((req, res, next) => {
   // Allow requests from any origin during development
-  res.header('Access-Control-Allow-Origin', 'https://jobby-app-teal.vercel.app');
+  res.header('Access-Control-Allow-Origin', 'https://jobby-app-teal.vercel.app/');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');

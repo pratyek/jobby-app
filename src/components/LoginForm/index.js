@@ -24,7 +24,7 @@ class LoginForm extends Component {
 
     // Redirect based on user role
     if (role === 'employer') {
-      history.replace('/employer-dashboard')
+      history.replace('/')
     } else {
       history.replace('/')
     }

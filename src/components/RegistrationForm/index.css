@@ -4,7 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Roboto', sans-serif;
 }
+
 .card-container {
   display: flex;
   flex-direction: column;
@@ -12,39 +14,84 @@
   background-color: #272727;
   padding: 65px;
   border-radius: 15px;
+  box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.8);
+  transition: transform 0.3s ease;
 }
+
+.card-container:hover {
+  transform: translateY(-5px);
+}
+
 .website-logo {
   width: 150px;
   margin-bottom: 25px;
+  transition: transform 0.3s ease;
 }
+
+.website-logo:hover {
+  transform: scale(1.05);
+}
+
+.form-heading {
+  color: #ffffff;
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
-  margin-top: 35px;
+  margin-top: 20px;
+  width: 100%;
 }
+
 .input-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
+  width: 100%;
 }
-.login-button {
+
+.register-button, .login-button {
   background-color: #4f46e5;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 8px;
   font-size: 16px;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   border: none;
   color: #fff;
-  margin-top: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
+  letter-spacing: 0.5px;
+  width: 100%;
 }
+
+.register-button:hover, .login-button:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(79, 70, 229, 0.4);
+}
+
+.register-button:active, .login-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 3px rgba(79, 70, 229, 0.3);
+}
+
 .label {
   color: #fff;
   font-size: 14px;
-  font-family: 'Roboto';
-  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
   margin-bottom: 8px;
+  letter-spacing: 0.5px;
 }
+
 .user-input {
   background: transparent;
   border: 1px solid #6366f1;
@@ -54,14 +101,90 @@
   outline: none;
   font-size: 16px;
   color: #fff;
+  transition: all 0.3s ease;
 }
+
+.user-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+select.user-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+select.user-input option {
+  background-color: #272727;
+  color: #ffffff;
+}
+
 .error-msg {
   align-self: start;
-  font-size: 16px;
-  margin-top: 3px;
-  margin-bottom: 0px;
-  font-family: 'Roboto';
   font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-family: 'Roboto', sans-serif;
   line-height: 16px;
   color: #ff0b37;
+  transition: opacity 0.3s ease;
+}
+
+.login-text, .register-text {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-top: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-link, .register-link {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.login-link:hover, .register-link:hover {
+  color: #4f46e5;
+}
+
+.login-link::after, .register-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #4f46e5;
+  transition: width 0.3s ease;
+}
+
+.login-link:hover::after, .register-link:hover::after {
+  width: 100%;
+}
+
+/* Add responsive styles */
+@media screen and (max-width: 768px) {
+  .card-container {
+    padding: 40px 25px;
+    width: 85%;
+    max-width: 400px;
+  }
+  
+  .website-logo {
+    width: 120px;
+  }
+  
+  .user-input {
+    width: 100%;
+  }
+  
+  .form-heading {
+    font-size: 20px;
+  }
 }
