@@ -27,11 +27,6 @@ const Home = () => {
 
           {isEmployer ? (
             <div className="employer-buttons">
-              <Link to="/employer-dashboard" className="link-item">
-                <button type="button" className="post-jobs-button">
-                  Post Jobs
-                </button>
-              </Link>
               <Link to="/jobs" className="link-item">
                 <button type="button" className="find-jobs">
                   View All Jobs
