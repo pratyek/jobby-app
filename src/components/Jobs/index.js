@@ -88,7 +88,117 @@ class Jobs extends Component {
       if (allJobs.length === 0) {
         // This is where the static jobs array would be defined
         // For brevity, I'm not including the full data array here
-        const data = [] // Replace with your default jobs data if needed
+        const data =[
+          {
+              "id": "bb95e51b-b1b2-4d97-bee4-1d5ec2b96751",
+              "title": "Devops Engineer",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+              "location": "Delhi",
+              "job_description": "We are looking for a DevOps Engineer with a minimum of 5 years of industry experience, preferably working in the financial IT community. The position in the team is focused on delivering exceptional services to both BU and Dev partners to minimize/avoid any production outages. The role will focus on production support.",
+              "employment_type": "Internship",
+              "package_per_annum": "10 LPA"
+          },
+          {
+              "id": "d6019453-f864-4a2f-8230-6a9642a59466",
+              "title": "Backend Engineer",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/facebook-img.png",
+              "location": "Bangalore",
+              "job_description": "We’re in search of a Back-End Software Engineer that specializes in server-side components. In this role, you’ll primarily work in NodeJs, SQL Lite, Python, AWS and GO and will bring a depth of knowledge on basic algorithms and data structures. As a Back-End Engineer, you might be architecting new features for our customers.",
+              "employment_type": "Full Time",
+              "package_per_annum": "21 LPA"
+          },
+          {
+              "id": "1e47d355-4000-4c27-a17a-ae55dd6df27d",
+              "title": "Fullstack Developer",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/google-img.png",
+              "location": "Hyderabad",
+              "job_description": "Google is and always will be an engineering company. We hire people with a broad set of technical skills who are ready to take on some of technology's greatest challenges and make an impact on millions, if not billions, of users. Google engineers are changing the world one technological achievement after another.",
+              "employment_type": "Internship",
+              "package_per_annum": "10 LPA"
+          },
+          {
+              "id": "10c539a8-97f3-4277-90c1-b83a32c11ba1",
+              "title": "Data Scientist",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/facebook-img.png",
+              "location": "Chennai",
+              "job_description": "Facebooks’s Data Science team leverages big data to empower business decisions. The Data Science team at Facebook works in close partnership with the trusted engineering, content moderator, and product teams to identify opportunities to develop and enhance Facebook user experiences. ",
+              "employment_type": "Internship",
+              "package_per_annum": "12 LPA"
+          },
+          {
+              "id": "ad104b3b-e2a4-42f0-b78b-2b4b4699cffb",
+              "title": "Data Scientist",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/google-img.png",
+              "location": "Hyderabad",
+              "job_description": "As a Data Scientist, you will evaluate and improve Google's products. You'll collaborate with a multi-disciplinary team of Engineers and Analysts on a wide range of problems, bringing analytical rigor and statistical methods to the challenges of measuring quality, improving consumer products, and understanding the behavior of end-users.",
+              "employment_type": "Internship",
+              "package_per_annum": "13 LPA"
+          },
+          {
+              "id": "7a17c601-9ecf-4a4f-b289-afa808ab1710",
+              "title": "Devops Engineer",
+              "rating": 5,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/zomato-img.png",
+              "location": "Mumbai",
+              "job_description": "As a DevOps Engineer, you will play a key role in bringing important software to market and into widespread use. In this role, you will integrate a variety of leading-edge technology stacks securely, and ensure the availability and safety of the production systems at scale.",
+              "employment_type": "Internship",
+              "package_per_annum": "12 LPA"
+          },
+          {
+              "id": "54462d29-6d8c-4b27-9a59-e0fbdbd4de0f",
+              "title": "Devops Engineer",
+              "rating": 5,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/swiggy-img.png",
+              "location": "Mumbai",
+              "job_description": "As DevOps Developer, you are responsible for implementing next-generation CI/CD systems and automation solutions. If you thrive in a dynamic, collaborative workplace, we provide an environment where you will be challenged and inspired every single day. And if you relish the freedom to bring creative, thoughtful solutions to the table, there's no limit to what you can do.",
+              "employment_type": "Full Time",
+              "package_per_annum": "17 LPA"
+          },
+          {
+              "id": "5ecd5a9b-4805-4924-8f26-551302326b27",
+              "title": "ML Engineer",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/amazon-img.png",
+              "location": "Bangalore",
+              "job_description": "We’re looking for a scientist who can define the next generation of FMA ML-based ranking, pricing, and econometric models to further improve customer experience and customer trust on Amazon. This scientist will work with tech and business teams within and outside of FMA to think outside the box and design innovative solutions.",
+              "employment_type": "Internship",
+              "package_per_annum": "12 LPA"
+          },
+          {
+              "id": "2b40029d-e5a5-48cc-84a6-b6e12d25625d",
+              "title": "Frontend Engineer",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+              "location": "Delhi",
+              "job_description": "The Experimentation Platform team builds internal tools with a big impact across the company. We are looking to add a UI engineer to our team to continue to improve our experiment analysis workflow and tools. Ideal candidates will be excited by direct contact with our users, fast feedback, and quick iteration.",
+              "employment_type": "Freelance",
+              "package_per_annum": "19 LPA"
+          },
+          {
+              "id": "62b19914-67fc-49aa-b10e-35b2e69fbedd",
+              "title": "Frontend Engineer",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/facebook-img.png",
+              "location": "Mumbai",
+              "job_description": "Are you interested in building products used by more than a billion people? Do you like shipping codes at a rapid pace? Facebook is seeking an experienced Front End Engineer that is passionate about building mobile and desktop web applications. Together, we can help people build stronger communities.",
+              "employment_type": "Freelance",
+              "package_per_annum": "28 LPA"
+          },
+          {
+              "id": "5a75b254-a812-4c2d-ae26-ec9e04234bf7",
+              "title": "Devops Engineer",
+              "rating": 4,
+              "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/flipkart-img.png",
+              "location": "Bangalore",
+              "job_description": "The Security Operations team is seeking a new team member to assist with a large-scale Data Center Migration and application integration. This team supports customer service and several corporate functions (HR/Legal/Compliance), primarily with PayPal’s global partners that use Citrix and third-party platforms. ",
+              "employment_type": "Part Time",
+              "package_per_annum": "38 LPA"
+          }]; // Replace with your default jobs data if needed
 
         // If the jobs array is defined elsewhere, use it here
         allJobs = data
